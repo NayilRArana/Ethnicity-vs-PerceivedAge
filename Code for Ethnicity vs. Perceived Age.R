@@ -55,3 +55,9 @@ ggplot(guesses, aes(x=factor(race), y=error, group=race)) +
   scale_x_discrete("Race", labels = guesses$race, breaks = guesses$race) +
   ylab("Error") +
   ggtitle("Boxplot of Error by Race")
+
+asians = guesses[guesses$race == 'Asian',]
+whites = guesses[guesses$race == 'White',]
+asians_error = asians$error
+whites_error = whites$error
+t.test(asians_error, whites_error, var.equal = FALSE, alternative = "less")
